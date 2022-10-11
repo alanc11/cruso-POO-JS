@@ -1,56 +1,56 @@
-const dayan = {
-    name: "Alondra",
-    age: 23,
-    aprovedCouses: [
-        "CSS Grid Layout",
-        "Scopes and Closures",
-    ],
+// const dayan = {
+//     name: "Alondra",
+//     age: 23,
+//     aprovedCouses: [
+//         "CSS Grid Layout",
+//         "Scopes and Closures",
+//     ],
 
-    aprobarCurso(nuevoCurso){
-        this.aprovedCouses.push(nuevoCurso); 
-    }
-};
+//     aprobarCurso(nuevoCurso){
+//         this.aprovedCouses.push(nuevoCurso); 
+//     }
+// };
 
-function Student(name, age , aprovedCouses){
-    this.name = name;
-    this.age = age;
-    this.aprovedCouses = aprovedCouses;
-}
+// function Student(name, age , aprovedCouses){
+//     this.name = name;
+//     this.age = age;
+//     this.aprovedCouses = aprovedCouses;
+// }
 
-Student.prototype.aprovarCurso = function(nuevoCurso){
-    this.aprovedCouses.push(nuevoCurso);
-}
+// Student.prototype.aprovarCurso = function(nuevoCurso){
+//     this.aprovedCouses.push(nuevoCurso);
+// }
 
-const juanita = new Student(
-    "Juanita Kirkland",
-    29,
-    ["CSS", "HTML", "Scopes"],
-    );
+// const juanita = new Student(
+//     "Juanita Kirkland",
+//     29,
+//     ["CSS", "HTML", "Scopes"],
+//     );
 
-//// Prototipos con la sintaxis de clases
-class Student2 {
-    constructor({
-        name,
-        age,
-        email,
-        facebook = "",
-        twitter = "",
-        instagram = "",
-    }){
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
-    aprobarCurso1(newCourse){
-        this.aprovedCouses.push(newCourse);
-    }
-} 
+// //// Prototipos con la sintaxis de clases
+// class Student2 {
+//     constructor({
+//         name,
+//         age,
+//         email,
+//         facebook = "",
+//         twitter = "",
+//         instagram = "",
+//     }){
+//         this.name = name;
+//         this.age = age;
+//         this.email = email;
+//     }
+//     aprobarCurso1(newCourse){
+//         this.aprovedCouses.push(newCourse);
+//     }
+// } 
 
-const alanc = new Student2({
-    email: "alanc@gmail.com",
-    name: "alanc",
-    age: 28,
-});
+// const alanc = new Student2({
+//     email: "alanc@gmail.com",
+//     name: "alanc",
+//     age: 28,
+// });
 
 //* VENTAJAS DE LA PROGRAMACIÓN ORIENTADA A OBJETOS
 class Course{
@@ -58,8 +58,19 @@ class Course{
         name,
         clases: [],
     }){
-        this.name = name;
+        this._name = name;
         this.clases = this.clases;
+    }
+
+    get name(){
+        return this._name;
+    }
+    set name(nuevoNombrecito){
+        if(nuevoNombrecito === "Curso malito de programación básica"){
+            console.error("No cambiar el nombre")
+        }else{
+            this._name = nuevoNombrecito;
+        }
     }
 }
 class LearningPath{
@@ -71,18 +82,12 @@ class LearningPath{
         this.cuorses = courses;
     }
 }
-class ClassList{
-    constructor({
-        
-    }){
-
-    }
-}
 
 const cursoProgramacionBasica = new Course({
     name: "Curso gratis de programación básica",
     clases:["Clase de computación básica","Clase de pensamiento lógico"],
 });
+cursoProgramacionBasica.name = "Curso básico de computación básica";
 
 const cursoDefinitivoHTML = new Course({
     name: "Curso definitivo de HTML y CSS",
